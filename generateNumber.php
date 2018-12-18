@@ -18,20 +18,15 @@ $result = $db->query($query);
 //$result = mysqli_query($conn, $query);
 
 $output = [
-	'success'=>false
+	'success'=>false,
 ];
-print("****");
-print_r($result);
 if($result){
 	//the query worked?
 	//oop
 
 	if($db->affected_rows>0){
-		$output = [  //ready your response
-			'success'=>true,
-			'number'=> $randomNumber,
-			'code'=>$code
-		];
+		$output['success'] = true;
+		$output['code'] = $code; 
 	} else {
 		$output['error'] = $db->error;
 	}
@@ -49,7 +44,6 @@ if($result){
 	//the query failed
 	$output['error']=$db->connect_error;
 }
-
 $json_output = json_encode( $output ); //convert response to json
 
 print( $json_output );  //send the response
