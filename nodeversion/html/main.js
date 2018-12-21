@@ -31,7 +31,7 @@ function getExchangeCode(){
 function getCurrentNumber(){
 	return $.ajax({
 		method: 'post',
-		url: 'getNumber.php',
+		url: 'getNumber',
 		dataType: 'json',
 		data: {
 			exchangeCode: numberExchangeCode
